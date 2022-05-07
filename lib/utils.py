@@ -201,11 +201,45 @@ def load_graph_data(pkl_filename):
 
 def load_pickle(pickle_file):
     try:
+        original = "data/sensor_graph/adj_mx.pkl"
+        destination = "data/sensor_graph/adj_mx_unix.pkl"
+
+        content = ''
+        outsize = 0
+        with open(original, 'rb') as infile:
+            content = infile.read()
+        with open(destination, 'wb') as output:
+            for line in content.splitlines():
+                outsize += len(line) + 1
+                output.write(line + str.encode('\n'))
+        
+        print("---------------------")
+        print("Done. Saved %s bytes." % (len(content)-outsize))
+        print("---------------------")
+
         with open(pickle_file, 'rb') as f:
             pickle_data = pickle.load(f)
     except UnicodeDecodeError as e:
-        with open(pickle_file, 'rb') as f:
+        original = "data/sensor_graph/adj_mx.pkl"
+        destination = "data/sensor_graph/adj_mx_unix.pkl"
+
+        content = ''
+        outsize = 0
+        with open(original, 'rb') as infile:
+            content = infile.read()
+        with open(destination, 'wb') as output:
+            for line in content.splitlines():
+                outsize += len(line) + 1
+                output.write(line + str.encode('\n'))
+        
+        print("---------------------")
+        print("Done. Saved %s bytes." % (len(content)-outsize))
+        print("---------------------")
+
+
+        with open("data/sensor_graph/adj_mx_unix.pkl", 'rb') as f:
             pickle_data = pickle.load(f, encoding='latin1')
+        
     except Exception as e:
         print('Unable to load data ', pickle_file, ':', e)
         raise

@@ -14,7 +14,7 @@ def main(args):
         supervisor_config = yaml.load(f)
         print(supervisor_config)
         graph_pkl_filename = supervisor_config['data'].get('graph_pkl_filename')
-        graph_pkl_filename = "data/sensor_graph/adj_mx.pkl"
+#         graph_pkl_filename = "data/sensor_graph/adj_mx.pkl"
         sensor_ids, sensor_id_to_ind, adj_mx = load_graph_data(graph_pkl_filename)
 
         supervisor = DCRNNSupervisor(adj_mx=adj_mx, **supervisor_config)

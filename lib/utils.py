@@ -201,42 +201,42 @@ def load_graph_data(pkl_filename):
 
 def load_pickle(pickle_file):
     try:
-#         original = "data/sensor_graph/adj_mx.pkl"
-#         destination = "data/sensor_graph/adj_mx_unix.pkl"
+        original = "data/sensor_graph/adj_mx.pkl"
+        destination = "data/sensor_graph/adj_mx_unix.pkl"
 
-#         content = ''
-#         outsize = 0
-#         with open(original, 'rb') as infile:
-#             content = infile.read()
-#         with open(destination, 'wb') as output:
-#             for line in content.splitlines():
-#                 outsize += len(line) + 1
-#                 output.write(line + str.encode('\n'))
+        content = ''
+        outsize = 0
+        with open(original, 'rb') as infile:
+            content = infile.read()
+        with open(destination, 'wb') as output:
+            for line in content.splitlines():
+                outsize += len(line) + 1
+                output.write(line + str.encode('\n'))
         
-#         print("---------------------")
-#         print("Done. Saved %s bytes." % (len(content)-outsize))
-#         print("---------------------")
+        print("---------------------")
+        print("Done. Saved %s bytes." % (len(content)-outsize))
+        print("---------------------")
 
         with open("data/sensor_graph/adj_mx_unix.pkl", 'rb') as f:
             content = f.read()
             print("Done. Saved %s bytes." % (len(content)))
             pickle_data = pickle.load(f)
     except UnicodeDecodeError as e:
-#         original = "data/sensor_graph/adj_mx.pkl"
-#         destination = "data/sensor_graph/adj_mx_unix.pkl"
+        original = "data/sensor_graph/adj_mx.pkl"
+        destination = "data/sensor_graph/adj_mx_unix.pkl"
 
-#         content = ''
-#         outsize = 0
-#         with open(original, 'rb') as infile:
-#             content = infile.read()
-#         with open(destination, 'wb') as output:
-#             for line in content.splitlines():
-#                 outsize += len(line) + 1
-#                 output.write(line + str.encode('\n'))
+        content = ''
+        outsize = 0
+        with open(original, 'rb') as infile:
+            content = infile.read()
+        with open(destination, 'wb') as output:
+            for line in content.splitlines():
+                outsize += len(line) + 1
+                output.write(line + str.encode('\n'))
         
-#         print("---------------------")
-#         print("Done. Saved %s bytes." % (len(content)-outsize))
-#         print("---------------------")
+        print("---------------------")
+        print("Done. Saved %s bytes." % (len(content)-outsize))
+        print("---------------------")
 
 
         with open("data/sensor_graph/adj_mx_unix.pkl", 'rb') as f:

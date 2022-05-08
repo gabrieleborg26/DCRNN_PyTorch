@@ -215,7 +215,6 @@ def load_pickle(pickle_file):
         
         print("---------------------")
         print("Done. Saved %s bytes." % (len(content)-outsize))
-        print("Done. 1Content %s." % (content))
         print("---------------------")
 
         with open(pickle_file, 'rb') as f:
@@ -235,7 +234,6 @@ def load_pickle(pickle_file):
         
         print("---------------------")
         print("Done. Saved %s bytes." % (len(content)-outsize))
-        print("Done. 2Content %s." % (content))
         print("---------------------")
 
 

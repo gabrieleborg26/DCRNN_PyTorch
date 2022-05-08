@@ -28,6 +28,11 @@ def main(args):
 
 
 if __name__ == '__main__':
+
+    
+
+
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--config_filename', default=None, type=str,
                         help='Configuration filename for restoring the model.')

@@ -8,6 +8,7 @@ from torch.utils.tensorboard import SummaryWriter
 from lib import utils
 from model.pytorch.dcrnn_model import DCRNNModel
 from model.pytorch.loss import masked_mae_loss
+import wandb
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -157,6 +158,19 @@ class DCRNNSupervisor:
         # steps is used in learning rate - will see if need to use it?
         min_val_loss = float('inf')
         wait = 0
+
+        wandb.init(project="metr-la-dcrnn", entity="gabriele26")
+
+
+
+        wandb.config = {
+        "learning_rate": base_lr,
+        "epochs": epochs,
+        "batch_size": 64
+        }
+
+
+
         optimizer = torch.optim.Adam(self.dcrnn_model.parameters(), lr=base_lr, eps=epsilon)
 
         lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=steps,
@@ -244,6 +258,15 @@ class DCRNNSupervisor:
                 if wait == patience:
                     self._logger.warning('Early stopping at epoch: %d' % epoch_num)
                     break
+
+
+            wandb.log({"train loss": np.mean(losses)})
+            wandb.log({"validation loss":  val_loss})
+            wandb.log({"Learning rate":  lr_scheduler.get_lr()[0]})
+
+            # Optional
+            wandb.watch(self.dcrnn_model)
+
 
     def _prepare_data(self, x, y):
         x, y = self._get_x_y(x, y)

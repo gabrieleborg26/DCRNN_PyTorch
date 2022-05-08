@@ -217,7 +217,7 @@ def load_pickle(pickle_file):
         print("Done. Saved %s bytes." % (len(content)-outsize))
         print("---------------------")
 
-        with open(pickle_file, 'rb') as f:
+        with open("data/sensor_graph/adj_mx_unix.pkl", 'rb') as f:
             pickle_data = pickle.load(f)
     except UnicodeDecodeError as e:
         original = "data/sensor_graph/adj_mx.pkl"
